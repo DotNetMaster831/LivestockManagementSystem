@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivestockManagementSystem.Views.HomePage"
+             Title="Home">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15" HorizontalOptions="Center">
+            <Label Text="🐄 Livestock Management System"
+                   FontSize="26"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"
+                   TextColor="#2E7D32"/>
+
+            <Label Text="Welcome! Select an option to manage or analyze livestock data."
+                   FontSize="16"
+                   HorizontalOptions="Center"
+                   TextColor="#555"/>
+
+            <Button Text="View Livestock List" Clicked="OnListClicked"/>
+            <Button Text="Query Livestock" Clicked="OnQueryClicked"/>
+            <Button Text="View Farm Statistics" Clicked="OnStatsClicked"/>
+            <Button Text="Profit Forecast" Clicked="OnForecastClicked"/>
+            <Button Text="Insert New Record" Clicked="OnInsertClicked"/>
+            <Button Text="Update Record" Clicked="OnUpdateClicked"/>
+            <Button Text="Delete Record" Clicked="OnDeleteClicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

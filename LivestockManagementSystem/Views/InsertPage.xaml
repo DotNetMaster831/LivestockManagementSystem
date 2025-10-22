@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivestockManagementSystem.Views.InsertPage"
+             xmlns:vm="clr-namespace:LivestockManagementSystem.ViewModels"
+             Title="Insert Livestock">
+    <ContentPage.BindingContext>
+        <vm:InsertViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="25"
+                             HorizontalOptions="Center"
+                             WidthRequest="750">
+
+            <!-- 🟢 Page Header -->
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Ellipse Fill="#4CAF50" WidthRequest="25" HeightRequest="25" VerticalOptions="Center"/>
+                <Label Text="Insert New Livestock Record"
+                       FontSize="26" FontAttributes="Bold"
+                       TextColor="#2E7D32"
+                       VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- ✅ Status Message -->
+            <Frame BackgroundColor="{Binding StatusColor}"
+                   BorderColor="#388E3C"
+                   CornerRadius="10"
+                   Padding="15"
+                   IsVisible="{Binding HasMessage}">
+                <Label Text="{Binding StatusMessage}"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"
+                       LineBreakMode="WordWrap"/>
+            </Frame>
+
+            <!-- 🧾 Input Form -->
+            <Frame BorderColor="#2E7D32"
+                   BackgroundColor="#E8F5E9"
+                   CornerRadius="12"
+                   Padding="25">
+
+                <Grid RowSpacing="20" ColumnSpacing="15"
+                      ColumnDefinitions="150,*"
+                      RowDefinitions="Auto,Auto,Auto,Auto,Auto">
+
+                    <Label Grid.Row="0" Grid.Column="0" Text="Type:"
+                           VerticalOptions="Center" TextColor="#1B1B1B" FontAttributes="Bold"/>
+                    <Picker Grid.Row="0" Grid.Column="1"
+                            ItemsSource="{Binding Types}"
+                            SelectedItem="{Binding SelectedType}"
+                            Title="Select livestock type"
+                            TextColor="#1B1B1B"
+                            BackgroundColor="White"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="Expense ($):"
+                           VerticalOptions="Center" TextColor="#1B1B1B" FontAttributes="Bold"/>
+                    <Entry Grid.Row="1" Grid.Column="1"
+                           Placeholder="e.g. 45.5"
+                           PlaceholderColor="#757575"
+                           Text="{Binding Expense}"
+                           Keyboard="Numeric"
+                           TextColor="#1B1B1B"
+                           BackgroundColor="White"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="Weight (kg):"
+                           VerticalOptions="Center" TextColor="#1B1B1B" FontAttributes="Bold"/>
+                    <Entry Grid.Row="2" Grid.Column="1"
+                           Placeholder="e.g. 320"
+                           PlaceholderColor="#757575"
+                           Text="{Binding Weight}"
+                           Keyboard="Numeric"
+                           TextColor="#1B1B1B"
+                           BackgroundColor="White"/>
+
+                    <Label Grid.Row="3" Grid.Column="0" Text="Colour:"
+                           VerticalOptions="Center" TextColor="#1B1B1B" FontAttributes="Bold"/>
+                    <Entry Grid.Row="3" Grid.Column="1"
+                           Placeholder="e.g. Red"
+                           PlaceholderColor="#757575"
+                           Text="{Binding Colour}"
+                           TextColor="#1B1B1B"
+                           BackgroundColor="White"/>
+
+                    <Label Grid.Row="4" Grid.Column="0" Text="Produce (kg):"
+                           VerticalOptions="Center" TextColor="#1B1B1B" FontAttributes="Bold"/>
+                    <Entry Grid.Row="4" Grid.Column="1"
+                           Placeholder="e.g. 20"
+                           PlaceholderColor="#757575"
+                           Text="{Binding ProduceAmount}"
+                           Keyboard="Numeric"
+                           TextColor="#1B1B1B"
+                           BackgroundColor="White"/>
+                </Grid>
+            </Frame>
+
+            <!-- 🟢 Button -->
+            <Button Text="✅ Insert Record"
+                    Command="{Binding InsertCommand}"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="10"
+                    HeightRequest="45"
+                    WidthRequest="250"
+                    HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

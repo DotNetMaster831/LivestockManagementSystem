@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="LivestockManagementSystem.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:LivestockManagementSystem"
+    xmlns:views="clr-namespace:LivestockManagementSystem.Views"
+    Title="Livestock Management System">
+
+    <!-- Flyout Navigation (Side Menu) -->
+    <FlyoutItem Title="🏠 Home" Icon="home.png">
+        <ShellContent ContentTemplate="{DataTemplate views:HomePage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="📋 Livestock List" Icon="list.png">
+        <ShellContent ContentTemplate="{DataTemplate views:LivestockListPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="🔍 Query" Icon="search.png">
+        <ShellContent ContentTemplate="{DataTemplate views:QueryPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="📊 Statistics" Icon="chart.png">
+        <ShellContent ContentTemplate="{DataTemplate views:StatisticsPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="💰 Forecast" Icon="forecast.png">
+        <ShellContent ContentTemplate="{DataTemplate views:ForecastPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="➕ Insert" Icon="add.png">
+        <ShellContent ContentTemplate="{DataTemplate views:InsertPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="✏️ Update" Icon="edit.png">
+        <ShellContent ContentTemplate="{DataTemplate views:UpdatePage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="🗑️ Delete" Icon="delete.png">
+        <ShellContent ContentTemplate="{DataTemplate views:DeletePage}" />
+    </FlyoutItem>
+
+</Shell>

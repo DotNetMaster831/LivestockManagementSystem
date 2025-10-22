@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivestockManagementSystem.Views.LivestockListPage"
+             xmlns:vm="clr-namespace:LivestockManagementSystem.ViewModels"
+             xmlns:util="clr-namespace:LivestockManagementSystem.Utilities"
+             Title="Livestock List">
+    <!-- Bind ViewModel -->
+    <ContentPage.BindingContext>
+        <vm:LivestockListViewModel />
+    </ContentPage.BindingContext>
+
+    <!-- Resource for profit/loss coloring -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <util:ProfitColorConverter x:Key="ProfitColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="15" Spacing="15"
+                             HorizontalOptions="Center"
+                             WidthRequest="900">
+
+            <!-- Title -->
+            <Label Text="🐄🐑  All Livestock Records"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="#1E4620"
+                   Margin="0,10,0,5"/>
+
+            <!-- Refresh Button -->
+            <Button Text="🔄 Refresh List"
+                    Command="{Binding RefreshCommand}"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    CornerRadius="10"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    HeightRequest="45"
+                    WidthRequest="400"
+                    HorizontalOptions="Center" />
+
+            <!-- Table Container -->
+            <Frame BorderColor="#2E7D32"
+                   CornerRadius="8"
+                   Padding="0"
+                   HasShadow="True"
+                   HorizontalOptions="Center"
+                   WidthRequest="850">
+
+                <!-- Data Collection -->
+                <CollectionView
+                    ItemsSource="{Binding LivestockList}"
+                    SelectionMode="None"
+                    BackgroundColor="#F9FFF9">
+
+                    <!-- Header -->
+                    <CollectionView.Header>
+                        <Grid Padding="10"
+                              ColumnSpacing="8"
+                              ColumnDefinitions="60,100,100,100,100,120,100"
+                              BackgroundColor="#2E7D32"
+                              HorizontalOptions="Center">
+                            <Label Grid.Column="0" Text="ID" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                            <Label Grid.Column="1" Text="Type" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                            <Label Grid.Column="2" Text="Expense ($)" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                            <Label Grid.Column="3" Text="Weight (kg)" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                            <Label Grid.Column="4" Text="Colour" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                            <Label Grid.Column="5" Text="Milk/Wool (kg)" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                            <Label Grid.Column="6" Text="Profit ($)" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                        </Grid>
+                    </CollectionView.Header>
+
+                    <!-- Item Template -->
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="8"
+                                  ColumnSpacing="8"
+                                  ColumnDefinitions="60,100,100,100,100,120,100"
+                                  BackgroundColor="{Binding Profit, Converter={StaticResource ProfitColorConverter}}"
+                                  HorizontalOptions="Center">
+
+                                <Label Grid.Column="0" Text="{Binding Id}" FontSize="15"
+                                       HorizontalOptions="Center" VerticalOptions="Center" TextColor="#1B1B1B" />
+                                <Label Grid.Column="1" Text="{Binding TypeName}" FontSize="15"
+                                       HorizontalOptions="Center" VerticalOptions="Center" TextColor="#1B1B1B" />
+                                <Label Grid.Column="2" Text="{Binding Expense, StringFormat='{0:F2}'}" FontSize="15"
+                                       HorizontalOptions="Center" VerticalOptions="Center" TextColor="#1B1B1B" />
+                                <Label Grid.Column="3" Text="{Binding Weight, StringFormat='{0:F2}'}" FontSize="15"
+                                       HorizontalOptions="Center" VerticalOptions="Center" TextColor="#1B1B1B" />
+                                <Label Grid.Column="4" Text="{Binding Colour}" FontSize="15"
+                                       HorizontalOptions="Center" VerticalOptions="Center" TextColor="#1B1B1B" />
+                                <Label Grid.Column="5" Text="{Binding ProduceAmount, StringFormat='{0:F1}'}" FontSize="15"
+                                       HorizontalOptions="Center" VerticalOptions="Center" TextColor="#1B1B1B" />
+                                <Label Grid.Column="6" Text="{Binding Profit, StringFormat='{0:F2}'}" FontSize="15"
+                                       HorizontalOptions="Center" VerticalOptions="Center" TextColor="#1B1B1B" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

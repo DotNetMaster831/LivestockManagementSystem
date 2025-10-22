@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivestockManagementSystem.Views.QueryPage"
+             xmlns:vm="clr-namespace:LivestockManagementSystem.ViewModels"
+             Title="Query Livestock">
+
+    <ContentPage.BindingContext>
+        <vm:QueryPageViewModel />
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <VerticalStackLayout Padding="15" Spacing="15"
+                             HorizontalOptions="Center"
+                             WidthRequest="850">
+
+            <!-- Title -->
+            <Label Text="🔍 Livestock Query"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="#1E4620"
+                   Margin="0,10,0,10"/>
+
+            <!-- Type Picker -->
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="Livestock Type:" VerticalOptions="Center" FontAttributes="Bold"/>
+                <Picker Title="Select Type"
+                        ItemsSource="{Binding LivestockTypes}"
+                        SelectedItem="{Binding SelectedType}"
+                        WidthRequest="200"/>
+            </HorizontalStackLayout>
+
+            <!-- Colour Picker -->
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="Colour:" VerticalOptions="Center" FontAttributes="Bold"/>
+                <Picker Title="Select Colour"
+                        ItemsSource="{Binding Colours}"
+                        SelectedItem="{Binding SelectedColour}"
+                        WidthRequest="200"/>
+            </HorizontalStackLayout>
+
+            <!-- Query Button -->
+            <Button Text="🔎 Run Query"
+                    Command="{Binding RunQueryCommand}"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    CornerRadius="10"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    HeightRequest="45"
+                    WidthRequest="300"
+                    HorizontalOptions="Center"/>
+
+            <!-- Results -->
+            <Frame CornerRadius="10"
+                   BorderColor="#2E7D32"
+                   BackgroundColor="#E8F5E9"
+                   HasShadow="True"
+                   Padding="15"
+                   Margin="0,20,0,0"
+                   IsVisible="{Binding HasResults}">
+
+                <VerticalStackLayout Spacing="8">
+
+                    <Label Text="📊 Query Results"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           TextColor="#2E7D32"
+                           HorizontalOptions="Center"/>
+
+                    <Label Text="{Binding ResultSummary}" 
+                           FontSize="16"
+                           TextColor="#1B1B1B"
+                           LineBreakMode="WordWrap"/>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
