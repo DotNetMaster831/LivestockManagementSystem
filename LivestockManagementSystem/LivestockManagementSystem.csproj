@@ -99,7 +99,7 @@
 
 	<ItemGroup>
 	  <None Update="Resources\Database\FarmData.db">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
 

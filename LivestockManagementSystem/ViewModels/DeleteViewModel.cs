@@ -44,7 +44,7 @@ namespace LivestockManagementSystem.ViewModels
                 return;
             }
 
-            bool confirm = await App.Current.MainPage.DisplayAlert(
+            bool confirm = await App.Current!.Windows[0].Page!.DisplayAlert(
                 "Confirm Deletion",
                 $"Are you sure you want to delete record ID {id}?",
                 "Yes", "No");

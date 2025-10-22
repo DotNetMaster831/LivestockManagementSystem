@@ -72,12 +72,22 @@ namespace LivestockManagementSystem.ViewModels
                 ShowMessage("⚠️ Colour field cannot be empty.", false);
                 return;
             }
+            if (string.IsNullOrWhiteSpace(ProduceAmount))
+            {
+                ShowMessage("⚠️ Produce Amount field cannot be empty.", false);
+                return;
+            }
             try
             {
                 Animal animal = SelectedType == "Cow" ? new Cow() : new Sheep();
                 animal.Expense = expense;
                 animal.Weight = weight;
                 animal.Colour = Colour.Trim();
+
+                if (animal is Cow cow)
+                    cow.Milk = double.TryParse(ProduceAmount, out double milkVal) ? milkVal : 0;
+                else if (animal is Sheep sheep)
+                    sheep.Wool = double.TryParse(ProduceAmount, out double woolVal) ? woolVal : 0;
 
                 _db.Add(animal);
                 await _db.SaveChangesAsync();

@@ -28,7 +28,8 @@
                    BorderColor="#B71C1C"
                    CornerRadius="10"
                    Padding="15"
-                   IsVisible="{Binding HasMessage}">
+                   IsVisible="{Binding HasMessage}"
+                   x:DataType="vm:DeleteViewModel">
                 <Label Text="{Binding StatusMessage}"
                        FontSize="16"
                        FontAttributes="Bold"
