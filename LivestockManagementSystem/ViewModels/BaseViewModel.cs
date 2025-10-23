@@ -11,7 +11,7 @@ namespace LivestockManagementSystem.ViewModels
     // Provides property-change notifications for data binding.
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         /// <summary>
         /// Sets a property's backing field and raises PropertyChanged only if value changed.

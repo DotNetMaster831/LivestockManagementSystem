@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LivestockManagementSystem.Views.LivestockListPage"
              xmlns:vm="clr-namespace:LivestockManagementSystem.ViewModels"
              xmlns:util="clr-namespace:LivestockManagementSystem.Utilities"
              Title="Livestock List">
+
     <!-- Bind ViewModel -->
     <ContentPage.BindingContext>
         <vm:LivestockListViewModel />
@@ -43,12 +44,18 @@
                     HorizontalOptions="Center" />
 
             <!-- Table Container -->
-            <Frame BorderColor="#2E7D32"
-                   CornerRadius="8"
-                   Padding="0"
-                   HasShadow="True"
-                   HorizontalOptions="Center"
-                   WidthRequest="850">
+            <Border Stroke="#2E7D32"
+                    StrokeThickness="1"
+                    Padding="0"
+                    HorizontalOptions="Center"
+                    WidthRequest="850"
+                    Background="#FFFFFF">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8" />
+                </Border.StrokeShape>
+                <Border.Shadow>
+                    <Shadow Radius="6" Opacity="0.3" />
+                </Border.Shadow>
 
                 <!-- Data Collection -->
                 <CollectionView
@@ -99,9 +106,8 @@
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
-
                 </CollectionView>
-            </Frame>
+            </Border>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

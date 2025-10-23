@@ -15,29 +15,29 @@ namespace LivestockManagementSystem.ViewModels
 
         public List<string> LivestockTypes { get; } = new() { "Cow", "Sheep" };
 
-        private string _selectedType;
-        public string SelectedType
+        private string? _selectedType;
+        public string? SelectedType
         {
             get => _selectedType;
             set => SetProperty(ref _selectedType, value);
         }
 
-        private string _quantity;
-        public string Quantity
+        private string? _quantity;
+        public string? Quantity
         {
             get => _quantity;
             set => SetProperty(ref _quantity, value);
         }
 
-        private bool _hasResult;
-        public bool HasResult
+        private bool? _hasResult;
+        public bool? HasResult
         {
             get => _hasResult;
             set => SetProperty(ref _hasResult, value);
         }
 
-        private string _forecastResult;
-        public string ForecastResult
+        private string? _forecastResult;
+        public string? ForecastResult
         {
             get => _forecastResult;
             set => SetProperty(ref _forecastResult, value);

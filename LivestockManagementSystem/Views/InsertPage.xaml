@@ -4,6 +4,7 @@
              x:Class="LivestockManagementSystem.Views.InsertPage"
              xmlns:vm="clr-namespace:LivestockManagementSystem.ViewModels"
              Title="Insert Livestock">
+
     <ContentPage.BindingContext>
         <vm:InsertViewModel />
     </ContentPage.BindingContext>
@@ -17,37 +18,49 @@
             <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
                 <Ellipse Fill="#4CAF50" WidthRequest="25" HeightRequest="25" VerticalOptions="Center"/>
                 <Label Text="Insert New Livestock Record"
-                       FontSize="26" FontAttributes="Bold"
+                       FontSize="26"
+                       FontAttributes="Bold"
                        TextColor="#2E7D32"
                        VerticalOptions="Center"/>
             </HorizontalStackLayout>
 
             <!-- ✅ Status Message -->
-            <Frame BackgroundColor="{Binding StatusColor}"
-                   BorderColor="#388E3C"
-                   CornerRadius="10"
-                   Padding="15"
-                   IsVisible="{Binding HasMessage}">
+            <Border Background="{Binding StatusColor}"
+                    Stroke="#388E3C"
+                    StrokeThickness="1"
+                    Padding="15"
+                    IsVisible="{Binding HasMessage}">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+
                 <Label Text="{Binding StatusMessage}"
                        FontSize="16"
                        FontAttributes="Bold"
                        TextColor="White"
                        HorizontalTextAlignment="Center"
                        LineBreakMode="WordWrap"/>
-            </Frame>
+            </Border>
 
             <!-- 🧾 Input Form -->
-            <Frame BorderColor="#2E7D32"
-                   BackgroundColor="#E8F5E9"
-                   CornerRadius="12"
-                   Padding="25">
+            <Border Stroke="#2E7D32"
+                    Background="#E8F5E9"
+                    Padding="25"
+                    StrokeThickness="1">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12" />
+                </Border.StrokeShape>
 
                 <Grid RowSpacing="20" ColumnSpacing="15"
                       ColumnDefinitions="150,*"
                       RowDefinitions="Auto,Auto,Auto,Auto,Auto">
 
-                    <Label Grid.Row="0" Grid.Column="0" Text="Type:"
-                           VerticalOptions="Center" TextColor="#1B1B1B" FontAttributes="Bold"/>
+                    <Label Grid.Row="0" Grid.Column="0" 
+                           Text="Type:"
+                           VerticalOptions="Center"
+                           TextColor="#1B1B1B"
+                           FontAttributes="Bold"/>
+
                     <Picker Grid.Row="0" Grid.Column="1"
                             ItemsSource="{Binding Types}"
                             SelectedItem="{Binding SelectedType}"
@@ -55,8 +68,12 @@
                             TextColor="#1B1B1B"
                             BackgroundColor="White"/>
 
-                    <Label Grid.Row="1" Grid.Column="0" Text="Expense ($):"
-                           VerticalOptions="Center" TextColor="#1B1B1B" FontAttributes="Bold"/>
+                    <Label Grid.Row="1" Grid.Column="0" 
+                           Text="Expense ($):"
+                           VerticalOptions="Center"
+                           TextColor="#1B1B1B"
+                           FontAttributes="Bold"/>
+
                     <Entry Grid.Row="1" Grid.Column="1"
                            Placeholder="e.g. 45.5"
                            PlaceholderColor="#757575"
@@ -65,8 +82,12 @@
                            TextColor="#1B1B1B"
                            BackgroundColor="White"/>
 
-                    <Label Grid.Row="2" Grid.Column="0" Text="Weight (kg):"
-                           VerticalOptions="Center" TextColor="#1B1B1B" FontAttributes="Bold"/>
+                    <Label Grid.Row="2" Grid.Column="0" 
+                           Text="Weight (kg):"
+                           VerticalOptions="Center"
+                           TextColor="#1B1B1B"
+                           FontAttributes="Bold"/>
+
                     <Entry Grid.Row="2" Grid.Column="1"
                            Placeholder="e.g. 320"
                            PlaceholderColor="#757575"
@@ -75,8 +96,12 @@
                            TextColor="#1B1B1B"
                            BackgroundColor="White"/>
 
-                    <Label Grid.Row="3" Grid.Column="0" Text="Colour:"
-                           VerticalOptions="Center" TextColor="#1B1B1B" FontAttributes="Bold"/>
+                    <Label Grid.Row="3" Grid.Column="0" 
+                           Text="Colour:"
+                           VerticalOptions="Center"
+                           TextColor="#1B1B1B"
+                           FontAttributes="Bold"/>
+
                     <Entry Grid.Row="3" Grid.Column="1"
                            Placeholder="e.g. Red"
                            PlaceholderColor="#757575"
@@ -84,8 +109,12 @@
                            TextColor="#1B1B1B"
                            BackgroundColor="White"/>
 
-                    <Label Grid.Row="4" Grid.Column="0" Text="Produce (kg):"
-                           VerticalOptions="Center" TextColor="#1B1B1B" FontAttributes="Bold"/>
+                    <Label Grid.Row="4" Grid.Column="0" 
+                           Text="Produce (kg):"
+                           VerticalOptions="Center"
+                           TextColor="#1B1B1B"
+                           FontAttributes="Bold"/>
+
                     <Entry Grid.Row="4" Grid.Column="1"
                            Placeholder="e.g. 20"
                            PlaceholderColor="#757575"
@@ -94,7 +123,7 @@
                            TextColor="#1B1B1B"
                            BackgroundColor="White"/>
                 </Grid>
-            </Frame>
+            </Border>
 
             <!-- 🟢 Button -->
             <Button Text="✅ Insert Record"

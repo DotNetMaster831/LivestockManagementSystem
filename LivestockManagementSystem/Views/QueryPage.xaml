@@ -8,6 +8,7 @@
     <ContentPage.BindingContext>
         <vm:QueryPageViewModel />
     </ContentPage.BindingContext>
+
     <ScrollView>
         <VerticalStackLayout Padding="15" Spacing="15"
                              HorizontalOptions="Center"
@@ -52,28 +53,31 @@
                     HorizontalOptions="Center"/>
 
             <!-- Results -->
-            <Frame CornerRadius="10"
-                   BorderColor="#2E7D32"
-                   BackgroundColor="#E8F5E9"
-                   HasShadow="True"
-                   Padding="15"
-                   Margin="0,20,0,0"
-                   IsVisible="{Binding HasResults}">
+            <Border Stroke="#2E7D32"
+                    Background="#E8F5E9"
+                    StrokeThickness="1"
+                    Padding="15"
+                    Margin="0,20,0,0"
+                    IsVisible="{Binding HasResults}">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+                <Border.Shadow>
+                    <Shadow Radius="6" Opacity="0.35" />
+                </Border.Shadow>
 
                 <VerticalStackLayout Spacing="8">
-
                     <Label Text="📊 Query Results"
                            FontSize="22"
                            FontAttributes="Bold"
                            TextColor="#2E7D32"
                            HorizontalOptions="Center"/>
-
                     <Label Text="{Binding ResultSummary}" 
                            FontSize="16"
                            TextColor="#1B1B1B"
                            LineBreakMode="WordWrap"/>
                 </VerticalStackLayout>
-            </Frame>
+            </Border>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

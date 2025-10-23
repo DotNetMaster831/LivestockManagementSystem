@@ -4,6 +4,7 @@
              x:Class="LivestockManagementSystem.Views.DeletePage"
              xmlns:vm="clr-namespace:LivestockManagementSystem.ViewModels"
              Title="Delete Livestock">
+
     <ContentPage.BindingContext>
         <vm:DeleteViewModel />
     </ContentPage.BindingContext>
@@ -24,35 +25,37 @@
             </HorizontalStackLayout>
 
             <!-- ✅ Status Message -->
-            <Frame BackgroundColor="{Binding StatusColor}"
-                   BorderColor="#B71C1C"
-                   CornerRadius="10"
-                   Padding="15"
-                   IsVisible="{Binding HasMessage}"
-                   x:DataType="vm:DeleteViewModel">
+            <Border Background="{Binding StatusColor}"
+                    Stroke="#B71C1C"
+                    Padding="15"
+                    StrokeThickness="1"
+                    IsVisible="{Binding HasMessage}">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
                 <Label Text="{Binding StatusMessage}"
                        FontSize="16"
                        FontAttributes="Bold"
                        TextColor="White"
                        HorizontalTextAlignment="Center"
                        LineBreakMode="WordWrap"/>
-            </Frame>
+            </Border>
 
             <!-- 🧾 Delete Form -->
-            <Frame BorderColor="#F44336"
-                   BackgroundColor="#FFEBEE"
-                   CornerRadius="12"
-                   Padding="25">
-
+            <Border Stroke="#F44336"
+                    Background="#FFEBEE"
+                    Padding="25"
+                    StrokeThickness="1">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12" />
+                </Border.StrokeShape>
                 <Grid ColumnSpacing="15"
                       ColumnDefinitions="150,*">
-
                     <Label Grid.Column="0"
                            Text="Record ID:"
                            VerticalOptions="Center"
                            TextColor="#1B1B1B"
                            FontAttributes="Bold"/>
-
                     <Entry Grid.Column="1"
                            Placeholder="Enter ID to delete"
                            PlaceholderColor="#757575"
@@ -61,7 +64,7 @@
                            TextColor="#1B1B1B"
                            BackgroundColor="White"/>
                 </Grid>
-            </Frame>
+            </Border>
 
             <!-- 🗑️ Delete Button -->
             <Button Text="🗑️ Delete Record"
